@@ -1,0 +1,10 @@
+name: DevCircuit starter check
+on: [push]
+jobs:
+  starter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Explain initialization
+        if: hashFiles('.devcircuit-template.json') != ''
+        run: echo "Run 'uvx --from https://github.com/wildrake08/devcircuit/releases/download/v1.0.0/devcircuit-1.0.0-py3-none-any.whl devcircuit --root . create APPLICATION_NAME' to initialize this repository."
